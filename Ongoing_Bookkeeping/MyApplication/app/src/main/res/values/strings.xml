@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="statistic">Statistic</string>
+    <string name="record">Record</string>
+    <string name="plan">Plan</string>
+    <string name="menu">Menu</string>
+    <string name="recordActivity">Record Activity</string>
+    <string name="saveActivity">Save for your Wish</string>
+    <string name="makeWishActivity">Make a Wish</string>
+    <string name="deleteWishActivity">Delete the Wish</string>
+    <string name="content_spend">activity</string>
+    <string name="income">income</string>
+    <string name="bill">bill</string>
+    <string name="submit">submit</string>
+    <string name="wish">Write your wish list </string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+</resources>

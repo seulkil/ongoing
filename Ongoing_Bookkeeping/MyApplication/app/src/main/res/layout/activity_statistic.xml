@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background = "@color/beige">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/menu"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+            <ImageView
+                android:id="@+id/goBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitStart"
+                android:src ="@drawable/ic_action_previous_item"/>
+
+            <TextView
+                android:text="@string/menu"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@+id/goBackButton"
+                android:textSize="30dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@color/brown"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/monthlyActivity"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_action_next_item" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monthly"
+            android:textSize = "30dp"
+            android:layout_alignBottom="@+id/monthly"
+            android:layout_toRightOf="@+id/monthly"
+            android:layout_toEndOf="@+id/monthly" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/weeklyActivity"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/weekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_action_next_item" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly"
+            android:textSize = "30dp"
+            android:layout_alignBottom="@+id/weekly"
+            android:layout_toRightOf="@+id/weekly"
+            android:layout_toEndOf="@+id/weekly" />
+
+    </RelativeLayout>
+
+</LinearLayout>
