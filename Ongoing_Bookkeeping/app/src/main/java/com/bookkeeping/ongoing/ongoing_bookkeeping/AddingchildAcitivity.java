@@ -65,13 +65,17 @@ public class AddingchildAcitivity extends Activity {
         query1.whereEqualTo("username", id);
         query1.findInBackground(new FindCallback<Child>() {
             public void done(List<Child> children, ParseException e) {
-                if (children != null || children.isEmpty())
+                if (children != null ) {
                     if (e == null) {
                         child[0] = children.get(0);
                     } else {
                         error.setText("The Child is not exist ");
                         child[0] = null;
                     }
+                } else {
+                    Log.d("ef","Empty");
+
+                }
             }
         });
 

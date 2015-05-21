@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bookkeeping.ongoing.ongoing_bookkeeping.user.LoginActivity;
 import com.parse.ParseUser;
@@ -17,15 +20,36 @@ import com.parse.ParseUser;
  */
 public class ChildstartActivity extends Activity {
 
+    private Button statisticButton;
+    private Button recordButton;
+    private TextView logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_childstart);
+        recordButton = (Button) findViewById(R.id.recordButton);
+        statisticButton = (Button) findViewById(R.id.statisticButton);
+        logout =(TextView) findViewById(R.id.logout);
         addListenerOnStatisticButton();
         addListenerOnRecordButton();
         addListenerOnPlanButton();
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        // TODO Auto-generated method stub
+        super.onWindowFocusChanged(hasFocus);
+
+        int[] locationInWindow = new int[2];
+        logout.getLocationInWindow(locationInWindow);
+
+        Log.v("TAG", "getLocationInWindow() - logout" + locationInWindow[0] + " : " + locationInWindow[1]);
+
+        int[] locationInWindow1 = new int[2];
+        statisticButton.getLocationInWindow(locationInWindow1);
+
+        Log.v("TAG", "getLocationInWindow() - stat" + locationInWindow1[0] + " : " + locationInWindow1[1]);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,7 +76,6 @@ public class ChildstartActivity extends Activity {
 
         final Context context = this;
 
-        Button statisticButton = (Button) findViewById(R.id.statisticButton);
 
         statisticButton.setOnClickListener(new View.OnClickListener() {
 
@@ -69,9 +92,9 @@ public class ChildstartActivity extends Activity {
 
         final Context context = this;
 
-        Button statisticButton = (Button) findViewById(R.id.recordButton);
 
-        statisticButton.setOnClickListener(new View.OnClickListener() {
+
+        recordButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {

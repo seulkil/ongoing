@@ -42,8 +42,14 @@ public View getView(final int position, View convertView, ViewGroup parent){
         TextView itemTextView = (TextView) view.findViewById((R.id.recordsDate));
         itemTextView.setText(((Record) (records.get(position))).getDate());
 
+        TextView itemTextView2 = (TextView) view.findViewById((R.id.recordmoney));
+        itemTextView2.setText(((Record) (records.get(position))).getMoney().toString());
+
         TextView itemTextView1 = (TextView) view.findViewById((R.id.recordsTitle));
         itemTextView1.setText(((Record) (records.get(position))).getTitle());
+
+
+
 
 
         return view;

@@ -66,6 +66,7 @@ public class Statistic_Activity extends Activity{
                             record = records.find();
                             RecordAdapter c = new RecordAdapter(Statistic_Activity.this, record);
                             listView.setAdapter(c);
+
                             c.notifyDataSetChanged();
                         } catch (ParseException e1) {
                             e1.printStackTrace();
@@ -119,6 +120,8 @@ public class Statistic_Activity extends Activity{
                 Intent intent;
                 if(!ParseUser.getCurrentUser().getBoolean("isChild")) {
                     intent = new Intent(context, ViewChildActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
                 } else {
                     intent = new Intent(context, ChildstartActivity.class);
                 }

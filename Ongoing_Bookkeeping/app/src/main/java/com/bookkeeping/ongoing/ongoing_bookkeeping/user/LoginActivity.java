@@ -3,9 +3,12 @@ package com.bookkeeping.ongoing.ongoing_bookkeeping.user;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bookkeeping.ongoing.ongoing_bookkeeping.ChildstartActivity;
 import com.bookkeeping.ongoing.ongoing_bookkeeping.R;
@@ -25,6 +28,7 @@ public class LoginActivity extends Activity {
     private EditText userName;
     private EditText password;
     private TextView error;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,20 @@ public class LoginActivity extends Activity {
         userName = (EditText) findViewById(R.id.userName);
         password = (EditText) findViewById(R.id.password);
         error = (TextView) findViewById(R.id.error);
+        button = (Button) findViewById(R.id.login);
+
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        // TODO Auto-generated method stub
+        super.onWindowFocusChanged(hasFocus);
+
+        int[] locationInWindow = new int[2];
+        button.getLocationInWindow(locationInWindow);
+
+        Log.v("TAG","getLocationInWindow() - "+ locationInWindow[0] + " : " + locationInWindow[1]);
+    }
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,9 +82,6 @@ public class LoginActivity extends Activity {
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
                     switch(e.getCode()){
-                        case ParseException.USERNAME_TAKEN:
-                            error.setText("Sorry, this username has already been taken.");
-                            break;
                         case ParseException.USERNAME_MISSING:
                             error.setText("Sorry, you must write a username to register.");
                             break;
@@ -76,7 +89,7 @@ public class LoginActivity extends Activity {
                             error.setText("Sorry, you must write a password to register.");
                             break;
                         case ParseException.OBJECT_NOT_FOUND:
-                            error.setText("Sorry, those credentials were invalid.");
+                            error.setText("Sorry, Doesnt Match.");
                             break;
                         default:
                             error.setText(e.getLocalizedMessage());
@@ -88,11 +101,7 @@ public class LoginActivity extends Activity {
         });
     }
 
-    public void showRegistration(View v) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
     private boolean isEmailValid(String email) {
         boolean isValid = false;
 
@@ -105,5 +114,14 @@ public class LoginActivity extends Activity {
             isValid = true;
         }
         return isValid;
+    }
+    public void showRegistration(View v) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void forget(View view){
+        Intent intent = new Intent(this, forgetActivity.class);
+        startActivity(intent);
     }
 }

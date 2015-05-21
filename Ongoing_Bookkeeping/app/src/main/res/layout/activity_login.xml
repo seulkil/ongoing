@@ -71,10 +71,20 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:onClick="signIn"
+            android:id="@+id/login"
             android:layout_gravity="center_horizontal"
             android:textSize="30dp"
             android:textColor="@color/black"
             android:background="@drawable/style_button1"/>
+        <TextView
+            android:id="@+id/forget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="@string/forget"
+            android:textColor="@color/blue"
+            android:onClick="forget"
+            android:clickable="true"/>
     </LinearLayout>
 
 </LinearLayout>

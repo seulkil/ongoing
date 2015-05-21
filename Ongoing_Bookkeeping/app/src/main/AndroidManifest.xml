@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bookkeeping.ongoing.ongoing_bookkeeping" >
+    package="com.bookkeeping.ongoing.ongoing_bookkeeping">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+    <!--<uses-sdk-->
+        <!--android:minSdkVersion="15"-->
+        <!--android:targetSdkVersion="21" />-->
     <application
         android:name="com.bookkeeping.ongoing.ongoing_bookkeeping.user.App"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:icon="@drawable/mb_icon"
+        android:icon="@drawable/icon"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.bookkeeping.ongoing.ongoing_bookkeeping.MainActivity"
@@ -51,7 +51,8 @@
             android:label="Wish"></activity>
         <activity android:name="com.bookkeeping.ongoing.ongoing_bookkeeping.ViewChildWishActivity"
             android:label="Wish"></activity>
-
+        <activity android:name="com.bookkeeping.ongoing.ongoing_bookkeeping.user.forgetActivity"
+            android:label="Wish"></activity>
 
 
     </application>

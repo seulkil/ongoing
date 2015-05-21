@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,20 +77,19 @@ public class Wish_Activity extends Activity {
                                 object.put("wishObjectId", id);
                                 object.saveInBackground();
                             } else {
-                                // The save failed.
+                                Log.d("wish", "fail");
                             }
                         }
                     });
 
 
                 } else {
-
-
+                    Log.d("Wish" , "dont exist");
                 }
             }
 
         });
-        Intent intent = new Intent(this, Plan_Activity.class);
+        Intent intent = new Intent(this, ChildstartActivity.class);
         startActivity(intent);
     }
     public void logoutButton(View view){

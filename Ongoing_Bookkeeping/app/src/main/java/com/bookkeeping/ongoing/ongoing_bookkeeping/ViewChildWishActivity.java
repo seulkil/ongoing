@@ -88,6 +88,7 @@ public class ViewChildWishActivity extends Activity {
             public void onClick(View arg0) {
 
                 Intent intent = new Intent(context, ViewChildActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -96,6 +97,8 @@ public class ViewChildWishActivity extends Activity {
     public void logoutButton(View view){
         ParseUser.logOut();
         Intent intent = new Intent(this, LoginActivity.class);
+        intent.putExtra("id", id);
         startActivity(intent);
+
     }
 }

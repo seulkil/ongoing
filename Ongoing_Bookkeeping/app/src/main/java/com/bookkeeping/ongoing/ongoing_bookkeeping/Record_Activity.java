@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bookkeeping.ongoing.ongoing_bookkeeping.user.Child;
 import com.bookkeeping.ongoing.ongoing_bookkeeping.user.LoginActivity;
@@ -110,7 +111,7 @@ public class Record_Activity extends Activity{
                                         double checkremain =0;
                                         double biggeremain=0;
                                         checkremain = remain - money;
-                                        if(checkremain >=0){
+                                        if(checkremain >= 0){
                                             boolean done = object.calculate(remain, true);
                                             Record record = new Record();
                                             record.setTitle("Saving For the Wish Item");
@@ -119,8 +120,12 @@ public class Record_Activity extends Activity{
                                             record.saveInBackground();
                                             object1.saveMoney(money);
                                             object1.saveInBackground();
+                                            object.getRecord().add(record);
                                             object.saveInBackground();
-                                        } else {
+                                        }else if(remain == 0){
+                                          // error.setText("You Don't need to save money");
+                                            Toast.makeText(Record_Activity.this, "You Don't need to save money.", Toast.LENGTH_LONG).show();
+                                        }  else{
                                             object1.saveMoney(remain);
                                             boolean done = object.calculate(remain, true);
                                             Record record = new Record();
@@ -128,6 +133,7 @@ public class Record_Activity extends Activity{
                                             record.setMoney(remain);
                                             record.setIsBilled(true);
                                             record.saveInBackground();
+                                            object.getRecord().add(record);
                                             object.saveInBackground();
                                             object1.saveInBackground();
                                         }
