@@ -65,45 +65,44 @@ public class AddingchildAcitivity extends Activity {
         query1.whereEqualTo("username", id);
         query1.findInBackground(new FindCallback<Child>() {
             public void done(List<Child> children, ParseException e) {
-                if (children != null ) {
-                    if (e == null) {
-                        child[0] = children.get(0);
-                    } else {
-                        error.setText("The Child is not exist ");
-                        child[0] = null;
-                    }
-                } else {
-                    Log.d("ef","Empty");
-
-                }
-            }
-        });
-
-        ParseQuery<Parent> query = ParseQuery.getQuery("Parent");
-        query.getInBackground(ParseUser.getCurrentUser().getString("parentObjectId"), new GetCallback<Parent>() {
-            public void done(Parent object, ParseException e) {
                 if (e == null) {
-                    // object will be your game
-                    ParseRelation<Child> relation = object.getRelation("Children");
-                    if (child[0] != null && child[0].getName().equals(kidName.getText().toString()) ) {
-                        relation.add(child[0]);
-                        object.saveInBackground();
-                        Intent intent = new Intent(AddingchildAcitivity.this, StartingActivity.class);
-                        startActivity(intent);
+                    child[0] = children.get(0);
 
-                    } else if (child[0] == null) {
-                        Log.d("child", "Dont Exist");
-                        error.setText("ID Doesnt Exist");
+                    ParseQuery<Parent> query = ParseQuery.getQuery("Parent");
+                    query.getInBackground(ParseUser.getCurrentUser().getString("parentObjectId"), new GetCallback<Parent>() {
+                        public void done(Parent object, ParseException e) {
+                            if (e == null) {
 
-                    } else {
-                        error.setText("Not Match");
-                    }
+                                // object will be your game
+                                ParseRelation<Child> relation = object.getRelation("Children");
+                                if (child[0] != null && child[0].getName().equals(kidName.getText().toString())) {
+                                    relation.add(child[0]);
+                                    object.saveInBackground();
+                                    Intent intent = new Intent(AddingchildAcitivity.this, StartingActivity.class);
+                                    startActivity(intent);
 
+                                } else if (child[0] != null && !child[0].getName().equals(kidName.getText().toString())) {
+                                    error.setText("Name or ID are not match");
+
+                                } else if (child[0] == null) {
+                                    error.setText("ID doesnt Exist");
+                                } else {
+                                    error.setText(e.getLocalizedMessage());
+                                }
+
+                            } else {
+                                // something went wrong
+                                error.setText(e.getLocalizedMessage());
+                            }
+                        }
+                    });
                 } else {
-                    // something went wrong
+                    Log.d("ef", "Empty");
+                    error.setText(e.getLocalizedMessage());
                 }
             }
         });
+
 
 
     }
